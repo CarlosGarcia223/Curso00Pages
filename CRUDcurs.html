@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gestión de cursos</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    .container {
+      margin: auto;
+      background: white;
+      padding: 30px 20px 40px 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+      background-color: #cce0f5;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px;
+    }
+
+    .actions button {
+      margin-right: 8px;
+      padding: 6px 12px;
+      font-size: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: white;
+    }
+
+    .actions button:hover {
+      background-color: #0056b3;
+    }
+
+    #form-container {
+      display: none;
+      margin-top: 30px;
+    }
+
+    form {
+      margin-top: 10px;
+    }
+
+    input[type="text"], input[type="number"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    @media (max-width: 600px) {
+      .header {
+        font-size: 20px;
+        padding: 20px 10px;
+      }
+
+      .btn, .actions button {
+        width: 100%;
+        margin: 5px 0;
+      }
+
+      .actions {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">Gestión de cursos</div>
+
+    <button class="btn" onclick="mostrarFormulario()">Añadir curso</button>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Duración (h)</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>HTML y CSS</td>
+          <td>20</td>
+          <td class="actions">
+            <button onclick="mostrarFormulario()">Editar</button>
+            <button>Eliminar</button>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>JavaScript Básico</td>
+          <td>30</td>
+          <td class="actions">
+            <button onclick="mostrarFormulario()">Editar</button>
+            <button>Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div id="form-container">
+      <h3>Añadir/Editar Curso</h3>
+      <form>
+        <input type="text" placeholder="Nombre del curso" />
+        <input type="number" placeholder="Duración en horas" />
+        <button class="btn" type="submit">Guardar</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function mostrarFormulario() {
+      const form = document.getElementById('form-container');
+      form.style.display = 'block';
+      form.scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
