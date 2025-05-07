@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cursos 00 - Registro</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+    }
+
+    .header {
+      background-color: #d3dbe3;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 24px;
+      font-style: italic;
+      font-weight: bold;
+      color: #2a71c1;
+    }
+
+    .title-highlight {
+      font-weight: bold;
+    }
+
+    .title-number {
+      color: #2a71c1;
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .form label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #333;
+    }
+
+    .form input {
+      padding: 10px 15px;
+      border: 2px solid #2a71c1;
+      border-radius: 30px;
+      background-color: #e0efff;
+      font-size: 16px;
+    }
+
+    .register-btn {
+      margin-top: 10px;
+      padding: 10px 0;
+      background-color: #e0efff;
+      color: #2a71c1;
+      border: 2px solid #2a71c1;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .register-btn:hover {
+      background-color: #c7e2ff;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #333;
+    }
+
+    .login-link a {
+      color: #2a71c1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1><span class="title-highlight">CURSOS</span> <span class="title-number">00</span></h1>
+      <p class="subtitle">Regístrate ahora para acceder a todos tus cursos y herramientas de aprendizaje.</p>
+    </header>
+
+    <form class="form">
+      <label for="nombre">Nombre completo:</label>
+      <input type="text" id="nombre" placeholder="Nombre completo" required />
+
+      <label for="correo">Correo electrónico:</label>
+      <input type="email" id="correo" placeholder="Correo electrónico" required />
+
+      <label for="contrasena">Contraseña:</label>
+      <input type="password" id="contrasena" placeholder="Contraseña" required />
+
+      <button type="submit" class="register-btn">Regístrate</button>
+    </form>
+
+    <p class="login-link">¿Ya tienes cuenta? <a href="#">Inicia sesión</a></p>
+  </div>
+</body>
+</html>
