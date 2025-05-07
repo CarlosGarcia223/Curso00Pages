@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Usuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: white;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .user-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 0.5rem 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .user-name {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        .user-email {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+        .user-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+        }
+        .user-role {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        .user-status {
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+        }
+        .status-active {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+        .status-inactive {
+            background-color: #ffebee;
+            color: #c62828;
+        }
+        .add-user-btn {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h5 style="margin: 0; font-weight: 600;">Listado de Usuarios</h5>
+    </div>
+
+    <div style="margin-bottom: 5rem;">
+        <div class="user-card">
+            <div class="user-name">Juan Pérez</div>
+            <div class="user-email">juan.perez@gmail.com</div>
+            <div class="user-details">
+                <span class="user-role">Administrador</span>
+                <span class="user-status status-active">Activo</span>
+            </div>
+        </div>
+
+        <div class="user-card">
+            <div class="user-name">Lucía García</div>
+            <div class="user-email">lucia.garcia@gmail.com</div>
+            <div class="user-details">
+                <span class="user-role">Usuario</span>
+                <span class="user-status status-inactive">Inactivo</span>
+            </div>
+        </div>
+
+        <!-- Más usuarios -->
+    </div>
+
+    <button class="add-user-btn btn btn-primary">
+        <i class="bi bi-plus" style="font-size: 1.5rem;"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Botón para añadir nuevo usuario
+        document.querySelector('.add-user-btn').addEventListener('click', function() {
+            alert('Abrir formulario para nuevo usuario');
+           
+        });
+
+        // Opcional: hacer las tarjetas de usuario clickeables
+        document.querySelectorAll('.user-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', function() {
+                const userName = this.querySelector('.user-name').textContent;
+                alert(`Mostrar detalles de: ${userName}`);
+                
+            });
+        });
+    </script>
+</body>
+</html>
