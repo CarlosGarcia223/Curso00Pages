@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CURSOS 00 APP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    .app-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+    }
+
+    .app-header {
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      align-items: center;
+      font-size: 14px;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #007bff;
+      padding-bottom: 10px;
+    }
+
+    .filters input[type="text"],
+    .filters select {
+      padding: 6px 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .filters button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .course-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .course-card {
+      background-color: #e6f0ff;
+      border-radius: 8px;
+      padding: 15px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.1);
+    }
+
+    .course-title {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .course-center {
+      font-size: 12px;
+      color: #007bff;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+
+    .course-desc {
+      background-color: #007bff;
+      color: white;
+      padding: 8px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .course-dates {
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .course-action {
+      text-align: right;
+    }
+
+    .course-action select {
+      padding: 5px;
+      font-size: 14px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .pagination button {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      margin: 5px 0;
+    }
+
+    @media (min-width: 768px) {
+      .app-header {
+        font-size: 28px;
+      }
+
+      .filters {
+        justify-content: flex-start;
+        gap: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="app-header">CURSOS 00 APP</div>
+
+    <div class="filters">
+      <input type="text" id="searchInput" placeholder="Buscar curso por nombre">
+      <select id="categoryFilter">
+        <option value="">Todas las categorías</option>
+        <option value="Negocios">Negocios</option>
+        <option value="Programación">Programación</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Diseño">Diseño</option>
+      </select>
+      <select id="centerFilter">
+        <option value="">Todos los centros</option>
+        <option value="Centro de Idiomas">Centro de Idiomas</option>
+        <option value="Centro Tecnológico Madrid">Centro Tecnológico Madrid</option>
+        <option value="Escuela de Negocios Madrid">Escuela de Negocios Madrid</option>
+        <option value="Centro TIC Sevilla">Centro TIC Sevilla</option>
+        <option value="Instituto Creativo Barcelona">Instituto Creativo Barcelona</option>
+        <option value="Centro de Tecnología Web">Centro de Tecnología Web</option>
+      </select>
+      <button onclick="applyFilters()">Filtrar</button>
+    </div>
+
+    <div class="course-list" id="courseList"></div>
+
+    <div class="pagination">
+      <button onclick="prevPage()">Anterior</button>
+      <button onclick="nextPage()">Siguiente</button>
+    </div>
+  </div>
+
+  <script>
+    const courses = [
+      { title: "Inglés para Negocios", category: "Negocios", center: "Centro de Idiomas", desc: "Inglés especializado en empresas", start: "5/07/2025", end: "20/08/2025" },
+      { title: "JavaScript Avanzado", category: "Programación", center: "Centro Tecnológico Madrid", desc: "Aprende ES6+, Promesas y Frameworks", start: "01/06/2025", end: "30/06/2025" },
+      { title: "Marketing Digital", category: "Marketing", center: "Escuela de Negocios Madrid", desc: "SEO, SEM y campañas online", start: "5/07/2025", end: "20/08/2025" },
+      { title: "Python desde Cero", category: "Programación", center: "Centro TIC Sevilla", desc: "Fundamentos de programación en Python", start: "10/07/2025", end: "25/08/2025" },
+      { title: "Diseño UX/UI", category: "Diseño", center: "Instituto Creativo Barcelona", desc: "Experiencia de usuario y diseño visual", start: "12/08/2025", end: "30/09/2025" },
+      { title: "Bases de Datos", category: "Programación", center: "Centro de Tecnología Web", desc: "MySQL, PostgreSQL y buenas prácticas", start: "01/09/2025", end: "20/10/2025" }
+    ];
+
+    let currentPage = 0;
+    const perPage = 3;
+    let filteredCourses = [...courses];
+
+    function applyFilters() {
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      const category = document.getElementById("categoryFilter").value;
+      const center = document.getElementById("centerFilter").value;
+
+      filteredCourses = courses.filter(c =>
+        c.title.toLowerCase().includes(search) &&
+        (category === "" || c.category === category) &&
+        (center === "" || c.center === center)
+      );
+
+      currentPage = 0;
+      renderCourses();
+    }
+
+    function renderCourses() {
+      const container = document.getElementById("courseList");
+      container.innerHTML = "";
+
+      const start = currentPage * perPage;
+      const end = start + perPage;
+      const pageCourses = filteredCourses.slice(start, end);
+
+      if (pageCourses.length === 0) {
+        container.innerHTML = "<p>No hay cursos disponibles.</p>";
+        return;
+      }
+
+      pageCourses.forEach(c => {
+        container.innerHTML += `
+          <div class="course-card">
+            <div class="course-title">${c.title}</div>
+            <div class="course-center">${c.center}</div>
+            <div class="course-desc">${c.desc}</div>
+            <div class="course-dates">
+              <div>Inicio:<br>${c.start}</div>
+              <div>Fin:<br>${c.end}</div>
+            </div>
+            <div class="course-action">
+              <select><option>Detalles</option></select>
+            </div>
+          </div>`;
+      });
+    }
+
+    function nextPage() {
+      if ((currentPage + 1) * perPage < filteredCourses.length) {
+        currentPage++;
+        renderCourses();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 0) {
+        currentPage--;
+        renderCourses();
+      }
+    }
+
+    applyFilters();
+  </script>
+</body>
+</html>
