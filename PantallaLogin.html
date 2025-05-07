@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos 00 - Inicio de Sesión</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f4fa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #cce5ff;
+      padding: 30px 0 10px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 36px;
+      color: #007bff;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      font-weight: bold;
+    }
+
+    main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    main h2 {
+      color: #007bff;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 80%;
+      max-width: 300px;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    .google-login {
+      margin: 30px 0 20px;
+    }
+
+    .google-login img {
+      width: 50px;
+      cursor: pointer;
+    }
+
+    .signup {
+      margin-top: 10px;
+      color: #007bff;
+      font-weight: bold;
+    }
+
+    .signup:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Cursos 00</h1>
+    <p>Inicio Sesion</p>
+  </header>
+
+  <main>
+    <h2>Inicia Sesion</h2>
+    <input type="text" placeholder="Usuario">
+    <input type="password" placeholder="Contraseña">
+    
+    <div class="google-login">
+      <img src="Imagenes/google.jpg">
+    </div>
+    
+    <div class="signup">
+      ¿Todavía no tienes una cuenta?<br>¡A qué esperas!
+    </div>
+  </main>
+
+</body>
+</html>

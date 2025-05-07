@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos 00 - Mis Cursos</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f4fa;
+    }
+
+    .header {
+      background-color: #cce5ff;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      color: #007bff;
+      font-size: 20px;
+    }
+
+    .header span {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .curso {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 15px 10px;
+      padding: 15px;
+      border-radius: 10px;
+      background-color: #e6f0ff;
+    }
+
+    .curso:nth-child(2) {
+      background-color: #e6d9f0;
+    }
+
+    .curso:nth-child(3) {
+      background-color: #d6f0e6;
+    }
+
+    .curso h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #007bff;
+    }
+
+    .curso img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .botones {
+      display: flex;
+      justify-content: space-around;
+      margin: 30px 10px 10px;
+    }
+
+    .botones button {
+      padding: 10px 15px;
+      font-size: 14px;
+      background-color: #5b42f3;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      flex: 1;
+      margin: 0 5px;
+    }
+
+    .botones button:hover {
+      background-color: #3e2bbf;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>Cursos 00</h1>
+    <span>Mis Cursos</span>
+  </div>
+
+  <div class="curso">
+    <h2>Curso 1</h2>
+  </div>
+
+  <div class="curso">
+    <h2>Curso 2</h2>
+  </div>
+
+  <div class="curso">
+    <h2>Curso 3</h2>
+  </div>
+
+  <div class="botones">
+    <button>Añadir</button>
+    <button>Modificar</button>
+    <button>Eliminar</button>
+  </div>
+
+</body>
+</html>
